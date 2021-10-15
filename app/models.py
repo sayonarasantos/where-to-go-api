@@ -1,5 +1,6 @@
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
+from sqlalchemy.sql.schema import CheckConstraint
 
 from .database import Base
 
@@ -42,4 +43,4 @@ class User(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, index=True)
 
-    lists = relationship('List', back_populates='owner')
+    lists = relationship('UserList', back_populates='owner')

@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 
-# from . import database
+from .database import SessionLocal
+
 
 app = FastAPI()
 
@@ -8,6 +9,3 @@ app = FastAPI()
 @app.get("/")
 def root():
     return {"message": "Hello World!"}
-
-
-# database.TestConnection()

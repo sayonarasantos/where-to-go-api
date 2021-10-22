@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  database:
+    container_name: wtg-database
+    image: postgres:13.4-alpine
+    env_file:
+      - .env.db
+    ports: 
+      - "1132:5432"
+    volumes: 
+      - wtg-database-data:/var/lib/postgresql/data
+
+  dbadmin:
+    container_name: wtg-pgadmin
+    image: dpage/pgadmin4:6.1
+    env_file:
+      - .env.pgadmin
+    ports:
+      - "1180:80"
+    volumes:
+      - wtg-pgadmin-lib:/var/lib/pgadmin
+
+
+volumes: 
+  wtg-database-data:
+  wtg-pgadmin-lib:
